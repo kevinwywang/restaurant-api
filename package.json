@@ -1,0 +1,24 @@
+{
+  "name": "restaurant-api",
+  "version": "1.0.0",
+  "description": "Restaurant API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinwywang/restaurant-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinwywang/restaurant-api/issues"
+  },
+  "homepage": "https://github.com/kevinwywang/restaurant-api#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.5.7",
+    "nodemon": "^1.19.0"
+  }
+}
