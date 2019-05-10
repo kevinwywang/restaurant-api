@@ -21,30 +21,15 @@ const BusinessSchema = new Schema({
             minlength: [5, 'Nothing shorter than 5 digits']
         },
         required: false
-    }
-});
-
-const ReviewSchema = new Schema({
-    name:{
-        type: String,
-        required: true
     },
     rating: {
-        type: Number,
-        min: [1, 'Nothing below 1'],
-        max: [5, 'Nothing above 5'],
-        validate: {
-            validator: Number.isInteger,
-            message: 'Rating needs to be an integer'
-        },
-        required: true
-    },
-    review: {
-        type: String,
-        maxlength: [1000, 'Max number of characters is 1000. Your review is too long!'],
+        type: [Number],
         required: false
+    },
+        review: {
+        type: [String],
+        required: false,
     }
 });
 
 module.exports = mongoose.model('Business', BusinessSchema);
-module.exports = mongoose.model('Review', ReviewSchema);

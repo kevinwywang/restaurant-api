@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const businessRouter = require('./routes/businessRouter');
-const reviewRouter = require('./routes/reviewRouter');
 
 const app = express();
 
@@ -9,10 +8,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/business', businessRouter);
-app.use('/business/reviews', reviewRouter);
 
-app.use('/', (req, res) => {
-    res.send('Welcome to the Restaurant API!');
+app.use('/', (_, res) => {
+    res.send('Welcome to the Business API!');
 });
 
 const port = process.env.PORT || 4444;

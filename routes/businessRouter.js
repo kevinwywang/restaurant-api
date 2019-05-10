@@ -12,7 +12,6 @@ businessRouter.post('/', (req, res) => {
         state: req.body.state,
         zip: req.body.zip
     }
-    business.rating = req.body.rating;
     Business.find({name: req.body.name}, (_, document) => {
         if (document.length){
             res.status(400).send('Business already exists. Could not create business.');
@@ -46,8 +45,27 @@ businessRouter.delete('/:name', (req, res) => {
         if (err) {
             res.status(400).send(err);
         } else {
-            res.send(`You successfully deleted all: ${req.params.name}`);
+            res.send(`You successfully deleted : ${req.params.name}`);
         }
+    });
+});
+
+businessRouter.patch('/', (req, res) => {
+    Business.findOne(
+        { name: req.body.name }, (err, document) => {
+            if (err) {
+                res.status(400).send(err);
+            } else {
+                req.body.rating && document.rating.push(req.body.rating);
+                req.body.review && document.review.push(req.body.review);
+                document.save((saveErr, savedDocument) => {
+                    if (saveErr) {
+                        res.status(400).send(saveErr)
+                    } else {
+                        res.send(`Your review has been posted!\n${savedDocument}`);
+                    }
+                });
+            }
     });
 });
 
